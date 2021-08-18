@@ -13,15 +13,16 @@ function Users({ users }) {
       <TableCell>{users.name}</TableCell>
       <TableCell>{users.userSecret}</TableCell>
       <TableCell>
+        <span className="text-primary m-2 p-1 ">
+          <AddBoxRoundedIcon style={{ fontSize: 29, cursor: "pointer" }} />
+        </span>
         <span
           className="badge bg-success p-2"
           style={{ fontWeight: 200, cursor: "pointer" }}
         >
           Edit
         </span>
-        <span className="text-primary m-2 p-1 ">
-          <AddBoxRoundedIcon style={{ fontSize: 29, cursor: "pointer" }} />
-        </span>
+
         <span className="text-danger p-1 ">
           <DeleteOutlineRoundedIcon
             onClick={() => removeUser(users.id)}
