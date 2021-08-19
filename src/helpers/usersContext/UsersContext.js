@@ -8,27 +8,27 @@ export const UsersContextProvider = ({ children }) => {
     {
       id: 1,
       name: "sadiq",
-      userSecret: "123sadiq",
+      password: "123sadiq",
     },
     {
       id: Math.floor(Math.random() * 10000),
       name: "ali",
-      userSecret: "ali11",
+      password: "ali11",
     },
     {
       id: Math.floor(Math.random() * 10000),
       name: "ali",
-      userSecret: "ali11",
+      password: "ali11",
     },
     {
       id: Math.floor(Math.random() * 10000),
       name: "ali",
-      userSecret: "ali11",
+      password: "ali11",
     },
     {
       id: Math.floor(Math.random() * 10000),
       name: "ali",
-      userSecret: "ali11",
+      password: "ali11",
     },
   ]);
 

@@ -11,11 +11,8 @@ function Users({ users }) {
     <>
       <TableCell>{users.id}</TableCell>
       <TableCell>{users.name}</TableCell>
-      <TableCell>{users.userSecret}</TableCell>
+      <TableCell>{users.password}</TableCell>
       <TableCell>
-        <span className="text-primary m-2 p-1 ">
-          <AddBoxRoundedIcon style={{ fontSize: 29, cursor: "pointer" }} />
-        </span>
         <span
           className="badge bg-success p-2"
           style={{ fontWeight: 200, cursor: "pointer" }}

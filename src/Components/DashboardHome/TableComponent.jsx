@@ -10,13 +10,10 @@ import Users from "../Users/Users";
 import styles from "./home.module.css";
 import { Typography } from "@material-ui/core";
 import { Button, Modal } from "react-bootstrap";
+import Add from "../AddNew/Add";
 
 function TableComponent({ users }) {
   const [show, setShow] = useState(false);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
 
   return (
     <div className={styles.tblUsers}>
@@ -56,40 +53,7 @@ function TableComponent({ users }) {
         </Table>
       </TableContainer>
 
-      <Modal show={show} centered>
-        <Modal.Header>
-          <h4 className="text-secondary">Add new user</h4>
-        </Modal.Header>
-        <Modal.Body>
-          <form onSubmit={handleSubmit}>
-            <div className="formgroup">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Username"
-              />
-            </div>
-            <div className="formgroup mt-2">
-              <input
-                type="password"
-                className="form-control "
-                placeholder="Password"
-              />
-            </div>
-
-            <div className="d-grid gap-2 mt-3">
-              <Button
-                type="submit"
-                variant="primary"
-                size="sm"
-                onClick={() => setShow(false)}
-              >
-                Add
-              </Button>
-            </div>
-          </form>
-        </Modal.Body>
-      </Modal>
+      <Add show={show} setShow={setShow} />
     </div>
   );
 }
