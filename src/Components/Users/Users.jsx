@@ -11,14 +11,18 @@ function Users({ users }) {
   const { removeUser } = useContext(UsersContext);
   const [show, setShow] = useState(false);
   const [pswsType, setpswsType] = useState(false);
+  const classNameUser = users.name;
 
   function changeFormat() {
     // const userTable = document.querySelector
-    const psws = document.querySelector(".psws");
+
+    const psws = document.querySelector(`.${classNameUser}`);
     setpswsType(!pswsType);
     pswsType ? (psws.type = "text") : (psws.type = "password");
     console.log(pswsType);
   }
+
+  function onChange() {}
 
   return (
     <>
@@ -28,8 +32,9 @@ function Users({ users }) {
         <input
           type="password"
           value={users.password}
+          onChange={() => onChange}
           style={{ border: "none", outline: "none" }}
-          className="psws"
+          className={classNameUser}
         />
         <VisibilityOutlinedIcon
           style={{ cursor: "pointer" }}
