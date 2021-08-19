@@ -1,21 +1,46 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./users.module.css";
 import { TableCell } from "@material-ui/core";
 import DeleteOutlineRoundedIcon from "@material-ui/icons/DeleteOutlineRounded";
 import AddBoxRoundedIcon from "@material-ui/icons/AddBoxRounded";
 import { UsersContext } from "../../helpers/usersContext/UsersContext";
+import UpdateUser from "../AddNew/UpdateUser";
+import VisibilityOutlinedIcon from "@material-ui/icons/VisibilityOutlined";
+
 function Users({ users }) {
   const { removeUser } = useContext(UsersContext);
+  const [show, setShow] = useState(false);
+  const [pswsType, setpswsType] = useState(false);
+
+  function changeFormat() {
+    // const userTable = document.querySelector
+    const psws = document.querySelector(".psws");
+    setpswsType(!pswsType);
+    pswsType ? (psws.type = "text") : (psws.type = "password");
+    console.log(pswsType);
+  }
 
   return (
     <>
       <TableCell>{users.id}</TableCell>
       <TableCell>{users.name}</TableCell>
-      <TableCell>{users.password}</TableCell>
+      <TableCell>
+        <input
+          type="password"
+          value={users.password}
+          style={{ border: "none", outline: "none" }}
+          className="psws"
+        />
+        <VisibilityOutlinedIcon
+          style={{ cursor: "pointer" }}
+          onClick={changeFormat}
+        />
+      </TableCell>
       <TableCell>
         <span
           className="badge bg-success p-2"
           style={{ fontWeight: 200, cursor: "pointer" }}
+          onClick={() => setShow(true)}
         >
           Edit
         </span>
@@ -27,6 +52,7 @@ function Users({ users }) {
           />
         </span>
       </TableCell>
+      <UpdateUser show={show} setShow={setShow} users={users} />
     </>
   );
 }

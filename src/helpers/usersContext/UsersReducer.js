@@ -11,7 +11,14 @@ export const UsersReducer = (state, action) => {
           password: action.users.password,
         },
       ];
-      return state;
+    case "EDIT_USER":
+      return [
+        ...state,
+        {
+          name: action.users.name,
+          password: action.users.password,
+        },
+      ];
     default:
       return state.filter();
   }

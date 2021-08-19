@@ -19,12 +19,23 @@ export const UsersContextProvider = ({ children }) => {
     });
   };
 
+  function edit(id, name, password) {
+    dispach({
+      type: "EDIT_USER",
+      users: {
+        name: name,
+        password: password,
+      },
+    });
+  }
+
   return (
     <UsersContext.Provider
       value={{
         users,
         dispach,
         removeUser,
+        edit,
       }}
     >
       {children}

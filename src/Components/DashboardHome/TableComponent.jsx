@@ -14,6 +14,7 @@ import Add from "../AddNew/Add";
 
 function TableComponent({ users }) {
   const [show, setShow] = useState(false);
+  const addUser = "New user";
 
   return (
     <div className={styles.tblUsers}>
@@ -53,7 +54,7 @@ function TableComponent({ users }) {
         </Table>
       </TableContainer>
 
-      <Add show={show} setShow={setShow} />
+      <Add show={show} setShow={setShow} addUser={addUser} />
     </div>
   );
 }

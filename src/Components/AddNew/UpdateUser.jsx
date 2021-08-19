@@ -1,32 +1,32 @@
+import { Checkbox } from "@material-ui/core";
 import React, { useContext, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { UsersContext } from "../../helpers/usersContext/UsersContext";
 
-function Add({ show, setShow, addUser }) {
+function UpdateUser({ show, setShow, users }) {
   const { dispach } = useContext(UsersContext);
+  const [text, setText] = useState(false);
+  let [passwordStatus, setPasswordStatus] = useState("Show password");
 
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
   function handleSubmit(e) {
     e.preventDefault();
-    name &&
-      password &&
-      dispach({
-        type: "ADD_USER",
-        users: {
-          name,
-          password: password,
-        },
-      });
     setShow(false);
-    setName("");
-    setPassword("");
+  }
+
+  function changeFormat() {
+    setText(!text);
+    const psw = document.querySelector(".psw");
+    if (text) {
+      psw.type = "password";
+    } else {
+      psw.type = "text";
+    }
   }
   return (
     <div>
       <Modal show={show} centered>
         <Modal.Header>
-          <h4 className="text-secondary">{addUser}</h4>
+          <h4 className="text-secondary">Update user</h4>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
@@ -35,18 +35,27 @@ function Add({ show, setShow, addUser }) {
                 type="text"
                 className="form-control"
                 placeholder="Username"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={users.name}
+                // onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="formgroup mt-2">
               <input
                 type="password"
-                className="form-control "
+                className="form-control psw"
                 placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={users.password}
+                // onChange={(e) => setPassword(e.target.value)}
               />
+              <div className="bottoms d-flex justify-contenar-start align-items-center">
+                <Checkbox id="checkbox" onClick={changeFormat} />
+                <label
+                  htmlFor="checkbox"
+                  style={{ cursor: "pointer", userSelect: "none" }}
+                >
+                  {passwordStatus}
+                </label>
+              </div>
             </div>
 
             <div className="d-grid gap-2 mt-3">
@@ -56,7 +65,7 @@ function Add({ show, setShow, addUser }) {
                 size="sm"
                 onClick={handleSubmit}
               >
-                Add
+                update
               </Button>
             </div>
           </form>
@@ -66,4 +75,4 @@ function Add({ show, setShow, addUser }) {
   );
 }
 
-export default Add;
+export default UpdateUser;
