@@ -17,6 +17,8 @@ function Add({ show, setShow }) {
       },
     });
     setShow(false);
+    setName("");
+    setPassword("");
   }
   return (
     <div>

@@ -6,26 +6,6 @@ export const UsersContext = createContext({});
 export const UsersContextProvider = ({ children }) => {
   const [users, dispach] = useReducer(UsersReducer, [
     {
-      id: 1,
-      name: "sadiq",
-      password: "123sadiq",
-    },
-    {
-      id: Math.floor(Math.random() * 10000),
-      name: "ali",
-      password: "ali11",
-    },
-    {
-      id: Math.floor(Math.random() * 10000),
-      name: "ali",
-      password: "ali11",
-    },
-    {
-      id: Math.floor(Math.random() * 10000),
-      name: "ali",
-      password: "ali11",
-    },
-    {
       id: Math.floor(Math.random() * 10000),
       name: "ali",
       password: "ali11",
